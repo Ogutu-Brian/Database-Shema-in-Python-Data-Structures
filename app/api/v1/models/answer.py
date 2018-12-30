@@ -4,9 +4,9 @@ from . import uuid4, BaseModel, datetime
 class Answer(BaseModel):
     """Defines the properties of an answer to a question"""
 
-    def __init__(self, id="", question=None, user=None, answer="",
+    def __init__(self, question=None, user=None, answer="",
                  created_at=datetime.datetime.now(), updated_at=datetime.datetime.now()):
-        super().__init__(self, created_at=created_at, updated_at=updated_at)
+        super().__init__(created_at=created_at, updated_at=updated_at)
         self.question = question
         self.answer = answer
         self.user = user

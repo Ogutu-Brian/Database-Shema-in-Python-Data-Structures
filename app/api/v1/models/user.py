@@ -6,7 +6,7 @@ class User(BaseModel):
 
     def __init__(self, first_name="", last_name="", email="", password="",
                  created_at=datetime.datetime.now(), updated_at=datetime.datetime.now()):
-        super().__init__(self, created_at=created_at, updated_at=updated_at)
+        super().__init__(created_at=updated_at, updated_at=updated_at)
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
