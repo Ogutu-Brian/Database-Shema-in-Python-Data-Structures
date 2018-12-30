@@ -24,6 +24,7 @@ class TestUser(unittest.TestCase):
         result = client().post(url, data=json.dumps(data), headers=headers)
         return json.loads(result.get_data(as_text=True))
 
-    def sign_up(self, url="", data={}, data={}, headers={}):
+    def sign_up(self, url="", data={}, headers={}):
         """sign up method for the test client"""
         result = client().post(url, data=json.dumps(data), headers=headers)
+        return json.loads(result.get_data(as_text=True))
