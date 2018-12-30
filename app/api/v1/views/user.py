@@ -25,7 +25,8 @@ def sign_up():
             "first_name": user.first_name,
             "last_name": user.last_name,
             "email": user.email,
-            "password": user.password
+            "password": user.password,
+            "status":"success"
         }), 201
     else:
         return jsonify({
