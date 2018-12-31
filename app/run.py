@@ -6,7 +6,7 @@ from . import(question_view, answer_view, user_view)
 def create_app():
     app = Flask(__name__)
     app.secret_key = secret_key
-    app.register_blueprint(question_view, url_prefix="/api/v1/qiestions")
+    app.register_blueprint(question_view, url_prefix="/api/v1/questions")
     app.register_blueprint(answer_view, url_prefix="/api/v1/answers")
     app.register_blueprint(user_view, url_prefix="/api/v1/users")
 

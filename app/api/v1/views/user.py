@@ -26,7 +26,7 @@ def sign_up():
             "last_name": user.last_name,
             "email": user.email,
             "password": user.password,
-            "status":"success"
+            "status": "success"
         }), 201
     else:
         return jsonify({
@@ -69,7 +69,7 @@ def log_in():
         if bcrypt.checkpw(data["password"].encode('utf8'), user.password.encode('utf8')):
             session["email"] = user.email
             return jsonify({
-                "message": "Welcome to stack overflow lite",
+                "message": "Welcome to stack overflow lite {}".format(user.first_name),
                 "status": "success"
             }), 200
         else:
@@ -87,9 +87,11 @@ def log_out():
             "status": "error"
         }), 401
     else:
+        mail = session["email"]
         session.pop("email")
         return jsonify({
-            "message": "You have successfully logged out of stack overflow-lite",
+            "message": "You have successfully logged out of stack overflow-lite, have a good day {}".format(
+                db.users.query_by_field("email", mail)[0].to_json()["first_name"]),
             "status": "success"
         }), 200
 

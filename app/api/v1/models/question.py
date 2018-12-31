@@ -5,8 +5,8 @@ class Question(BaseModel):
     """Defines all the properties of a question"""
 
     def __init__(self, subject="", question="", user=None,
-                 created_at=datetime.datetime.now(), update_at=datetime.datetime.now()):
-        super().__init__(created_at=created_at, update_at=update_at)
+                 created_at=datetime.datetime.now(), updated_at=datetime.datetime.now()):
+        super().__init__(created_at=created_at, updated_at=updated_at)
         self.subject = subject
         self.question = question
         self.user = user

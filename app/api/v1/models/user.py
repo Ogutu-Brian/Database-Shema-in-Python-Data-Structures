@@ -15,7 +15,7 @@ class User(BaseModel):
     def to_json(self):
         json_data = {
             "id": self.id,
-            "firat_name": self.first_name,
+            "first_name": self.first_name,
             "last_name": self.last_name,
             "email": self.email,
             "password": self.password

@@ -81,14 +81,14 @@ class QuestionCollection(BaseCollection):
                 "message": "subject must be provided",
                 "status": "error"
             })
-        if not item.get("user"):
-            errors.append({
-                "message": "user must be propvided",
-                "status": "error"
-            })
+        # if not item.get("user"):
+        #     errors.append({
+        #         "message": "user must be propvided",
+        #         "status": "error"
+        #     })
         if not item.get('question'):
             errors.append({
-                "message": "a qyestion must be provied",
+                "message": "a question must be provied",
                 "status": "error"
             })
         return errors, len(errors) == 0
@@ -102,11 +102,11 @@ class AnswerCollection(BaseCollection):
                 "message": "question must be provided",
                 "status": "error"
             })
-        if not item.get('user'):
-            errors.append({
-                "message": "a user must be provided",
-                "status": "error"
-            })
+        # if not item.get('user'):
+        #     errors.append({
+        #         "message": "a user must be provided",
+        #         "status": "error"
+        #     })
         if not item.get('question'):
             errors.append({
                 "message": "question must be provided",
