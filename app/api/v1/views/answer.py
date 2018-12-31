@@ -39,17 +39,30 @@ def post_answer():
             answer_item = Answer(question=question, user=user, answer=answer)
             db.answers.insert(answer_item)
             return jsonify({
-                # "data": {key: value for (key, value) in
-                #          answer_item.to_json().items() if key != "question" and key != "answer"},
-                "question":answer_item.question.to_json()["question"],
-                "user":answer_item.user.to_json()["first_name"],
-                "status":"success"
-            }),201
+                "data": {key: value for (key, value) in
+                         answer_item.to_json().items() if key != "question" and key != "user"},
+                "question": answer_item.question.to_json()["question"],
+                "user": answer_item.user.to_json()["first_name"],
+                "status": "success"
+            }), 201
     else:
         return jsonify({
             "message": "The data must be in JSON",
             "status": "error"
         }), 401
-@answer_view.route('/',methods=['GET'])
+
+
+@answer_view.route('/', methods=['GET'])
 def get_answers():
-    pass
+    data = []
+    questions = db.answers.query_all()
+    for item in questions:
+        content = {key: value for (key, value) in item.to_json(
+        ).items() if key != "question" and key != "user"}
+        content["user"] = item.to_json()["user"].to_json()["first_name"]
+        content["question"] = item.to_json()["question"].to_json()["question"]
+        data.append(content)
+    return jsonify({
+        "data": data,
+        "status": "success"
+    }), 200

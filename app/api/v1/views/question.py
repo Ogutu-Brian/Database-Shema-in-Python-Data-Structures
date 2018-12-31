@@ -47,10 +47,10 @@ def post_question():
 def get_questions():
     data = []
     for item in db.questions.query_all():
-        data.append(
-            {key: value for (key, value)
-             in item.to_json().items() if key != "user"}
-        )
+        content = {key: value for (
+            key, value) in item.to_json().items() if key != "user"}
+        content["user"] = item.to_json()["user"].to_json()["first_name"]
+        data.append(content)
     return jsonify({
         "data": data,
         "ststus": "success"
