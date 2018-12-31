@@ -45,8 +45,13 @@ def post_question():
 
 @question_view.route('/', methods=['GET'])
 def get_questions():
-    questions = [item.to_json() for item in db.questions.query_all()]
+    data = []
+    for item in db.questions.query_all():
+        data.append(
+            {key: value for (key, value)
+             in item.to_json().items() if key != "user"}
+        )
     return jsonify({
-        "data": questions,
+        "data": data,
         "ststus": "success"
     }), 200

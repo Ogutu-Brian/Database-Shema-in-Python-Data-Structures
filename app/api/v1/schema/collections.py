@@ -107,9 +107,9 @@ class AnswerCollection(BaseCollection):
         #         "message": "a user must be provided",
         #         "status": "error"
         #     })
-        if not item.get('question'):
+        if not item.get('answer'):
             errors.append({
-                "message": "question must be provided",
+                "message": "answer must be provided",
                 "status": "error"
             })
         return errors, len(errors) == 0
